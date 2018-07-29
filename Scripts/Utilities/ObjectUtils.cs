@@ -94,8 +94,15 @@ namespace UnityEditor.Experimental.EditorVR.Utilities
             else
             {
                 component = EditorUtility.CreateGameObjectWithHideFlags(type.Name, hideFlags, type).GetComponent(type);
-                SetRunInEditModeRecursively(component.gameObject, runInEditMode);
-                component.transform.SetParent(parent, worldPositionStays);
+                if (component != null)
+                {
+                    SetRunInEditModeRecursively(component.gameObject, runInEditMode);
+                    component.transform.SetParent(parent, worldPositionStays);
+                }
+                else
+                {
+                    Debug.LogWarning("Could not Create GameObject With Component : " + type.Name);
+                }
             }
 #endif
 
