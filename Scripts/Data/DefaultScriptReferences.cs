@@ -77,9 +77,16 @@ namespace UnityEditor.Experimental.EditorVR.Utilities
                         continue;
 
                     var mb = (MonoBehaviour)ObjectUtils.CreateGameObjectWithComponent(t, runInEditMode: false);
-                    mb.gameObject.hideFlags = HideFlags.None;
-                    mb.enabled = false;
-                    mb.transform.parent = prefabsRoot.transform;
+                    if (mb != null)
+                    {
+                        mb.gameObject.hideFlags = HideFlags.None;
+                        mb.enabled = false;
+                        mb.transform.parent = prefabsRoot.transform;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Script reference could not be created for type : " + t.Name);
+                    }
                 }
             };
 
