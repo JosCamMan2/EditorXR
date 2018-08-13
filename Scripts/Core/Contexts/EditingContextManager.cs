@@ -177,7 +177,7 @@ namespace UnityEditor.Experimental.EditorVR.Core
 
         void OnApplicationQuit()
         {
-            Debug.Log("Quitting");
+            Debug.Log("Quitting EditorXR");
         }
 
         void OnDisable()
