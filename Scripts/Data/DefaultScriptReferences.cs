@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEditor;
-using UnityEditor.Experimental.EditorVR;
 using UnityEditor.Experimental.EditorVR.Core;
-using UnityEditor.Experimental.EditorVR.Utilities;
 using UnityEngine;
 
 namespace UnityEditor.Experimental.EditorVR.Utilities
@@ -44,7 +41,6 @@ namespace UnityEditor.Experimental.EditorVR.Utilities
             var defaultScriptReferences = Resources.Load<DefaultScriptReferences>(Path.GetFileNameWithoutExtension(k_Path));
             return defaultScriptReferences ? defaultScriptReferences.m_EditingContexts.ConvertAll(ec => (IEditingContext)ec) : null;
         }
-
 
         void Awake()
         {
