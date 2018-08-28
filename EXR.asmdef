@@ -4,9 +4,11 @@
         "EXR-Dependencies",
         "SteamVR",
         "input-prototype",
-        "OVR",
-        "VRLR"
+        "VRLR",
+        "OVR"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }
