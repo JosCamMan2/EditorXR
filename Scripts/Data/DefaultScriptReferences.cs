@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEditor;
-using UnityEditor.Experimental.EditorVR;
 using UnityEditor.Experimental.EditorVR.Core;
-using UnityEditor.Experimental.EditorVR.Utilities;
 using UnityEngine;
 
 namespace UnityEditor.Experimental.EditorVR.Utilities
@@ -45,7 +42,6 @@ namespace UnityEditor.Experimental.EditorVR.Utilities
             return defaultScriptReferences ? defaultScriptReferences.m_EditingContexts.ConvertAll(ec => (IEditingContext)ec) : null;
         }
 
-
         void Awake()
         {
             if (m_ScriptPrefab)
@@ -77,9 +73,16 @@ namespace UnityEditor.Experimental.EditorVR.Utilities
                         continue;
 
                     var mb = (MonoBehaviour)ObjectUtils.CreateGameObjectWithComponent(t, runInEditMode: false);
-                    mb.gameObject.hideFlags = HideFlags.None;
-                    mb.enabled = false;
-                    mb.transform.parent = prefabsRoot.transform;
+                    if (mb != null)
+                    {
+                        mb.gameObject.hideFlags = HideFlags.None;
+                        mb.enabled = false;
+                        mb.transform.parent = prefabsRoot.transform;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Script reference could not be created for type : " + t.Name);
+                    }
                 }
             };
 
